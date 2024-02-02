@@ -30,9 +30,11 @@ export default function StandardCardCollection(props) {
   return (
     <Collection
       type="grid"
+      isPaginated={true}
       searchPlaceholder="Search..."
-      templateRows="1fr 1fr"
-      autoFlow="column"
+      itemsPerPage={6}
+      templateColumns="1fr 1fr 1fr"
+      autoFlow="row"
       alignItems="stretch"
       justifyContent="stretch"
       items={items || []}

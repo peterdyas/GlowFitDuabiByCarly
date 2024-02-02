@@ -6,11 +6,18 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useDataStoreCreateAction } from "./utils";
+import { Programs } from "../models";
+import { schema } from "../models/schema";
 import { Button, Divider, Flex, Text, TextField } from "@aws-amplify/ui-react";
 import LogoWithText from "./LogoWithText";
 export default function MarketingFooter(props) {
   const { overrides, ...rest } = props;
+  const librariesOnClick = useDataStoreCreateAction({
+    fields: {},
+    model: Programs,
+    schema: schema,
+  });
   return (
     <Flex
       gap="32px"
@@ -204,6 +211,9 @@ export default function MarketingFooter(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="Libraries"
+            onClick={() => {
+              librariesOnClick();
+            }}
             {...getOverrideProps(overrides, "Libraries")}
           ></Text>
           <Text
